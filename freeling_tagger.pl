@@ -1,54 +1,63 @@
 #!/usr/bin/perl
 
+use utf8::all;
 use warnings;
 use strict;
 use Data::Dumper;
 use FL3 'pt';
+use XML::LibXML;
 
-#<:encoding(iso-8859-1)
-my $texto;
-{
-	open my $fh, "<:utf8", "Corpus/mini_corpus_pt.xml" or die "can not open file!\n";
-	local $/=undef;
-	$texto = <$fh>;
-	close $fh;
-}
-binmode STDOUT, ":utf8";
-# Atomizacao
-my $tokens = tokenizer->tokenize($texto);
-my $frases = splitter->split($tokens);
+my $xml_src = $ARGV[0];
 
-#Analise morfologica
-$frases = morph->analyze($frases, NERecognition => 0);
+my $parser = XML::LibXML->new;
+my $doc = $parser->parse_file($xml_src);
+my @nodeList = $doc->getElementsByTagName('news');
 
-# Etiquetacai POS(''Part of Speech'') usando Hidden Markov Models
+my %fl_tags = ( "NP00000" => 1, "W" => 1 );
+my $id=1;
 
-#$frases = hmm->tag($frases);
-
-#$frases = relax->tag($frases);
-
-for my $f(@$frases) {
-	my @words = $f->words;
-	for my $w(@words) {
-		my $h = $w->as_hash();
-		print join("\t", map { $h->{$_} } (qw.form lemma tag.)), "\n";
+print "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n";
+print "<newsdb>\n";
+foreach my $news (@nodeList) {
+	print "<".$news->nodeName().">\n";
+	foreach my $tag ($news->childNodes()) {
+		my $tagname = $tag->nodeName();
+		if(! ($tagname =~ "text") ) {
+			entities_marker($tagname, $news->getElementsByTagName($tagname)->string_value());
+		}
 	}
+	print "</".$news->nodeName().">\n";
 }
+print "</newsdb>\n";
 
-__END__
-$frases = chart->parse($frases);
-for my $f(@$frases) {
-	print $f->to_text, "\n";
-	if($f->is_parsed) {
-		my $parseTree = $f->parse_tree;
-		print $parseTree->dump;
-	}
-}
+sub entities_marker {
+	my $tag = shift;
+	my $texto = shift;
 
-for my $f(@$frases) {
-	my @words = $f->words();
-	for my $w(@words) {
-		my $h = $w->as_hash();
-		print Dumper($h);
+	# Atomizacao
+	my $tokens = tokenizer->tokenize($texto);
+	my $frases = splitter->split($tokens);
+
+	#Analise morfologica
+	$frases = morph->analyze($frases);
+
+	# Etiquetacai POS(''Part of Speech'') usando Hidden Markov Models
+	$frases = hmm->tag($frases);
+	#$frases = relax->tag($frases);
+
+	print "<$tag>";
+	for my $f (@$frases) {
+		my @words = $f->words;
+		for my $w (@words) {
+			my $h = $w->as_hash();
+			$h->{form} =~ s/_/ /g;
+			if(exists $fl_tags{$h->{tag}}) {
+				print "<END id='$id' type='".$h->{tag}."'>".$h->{form}."</ENT> ";
+			} else {
+				print $h->{form}." ";
+			}
+			$id++;
+		}
 	}
+	print "</$tag>\n";
 }
