@@ -6,6 +6,7 @@ use strict;
 use Data::Dumper;
 #use FL3 'pt';
 use XML::LibXML;
+use Lingua::Jspell;
 
 # Gazeteers
 my %paises = load_gazeteer('./Gazeteer/paises.txt');
@@ -116,15 +117,20 @@ sub in_jspell
 	my $sem = shift;
 
 	my @forms = $dic->fea($ent);
-	my %form = %{$forms[0]};
+	my %form;
+
+	if(scalar @forms) 
+	{ 
+		%form = %{$forms[0]};
 	
-	if($form{'CAT'} =~ /np/ and $form{'SEM'} =~ /$sem/)
-	{
-		return 1;
-	}
-	else 
-	{
-		return 0;
+		if(exists $form{'CAT'} and exists $form{'SEM'} and $form{'CAT'} =~ /np/ and $form{'SEM'} =~ /$sem/)
+		{
+			return 1;
+		}
+		else 
+		{
+			return 0;
+		}
 	}
 }
 
