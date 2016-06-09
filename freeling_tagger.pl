@@ -51,12 +51,13 @@ sub entities_marker {
 		for my $w (@words) {
 			my $h = $w->as_hash();
 			$h->{form} =~ s/_/ /g;
-			if(exists $fl_tags{$h->{tag}}) {
-				print "<END id='$id' tag='".$h->{tag}."'>".$h->{form}."</ENT> ";
+			if(exists $fl_tags{$h->{tag}}) 
+			{
+				print "<ENT id='$id' tag='".$h->{tag}."'>".$h->{form}."</ENT> ";
+				$id++;
 			} else {
 				print $h->{form}." ";
 			}
-			$id++;
 		}
 	}
 	print "</$tag>\n";
