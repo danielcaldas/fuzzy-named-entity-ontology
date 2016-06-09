@@ -4,22 +4,47 @@ use strict;
 use warnings;
 use File::Spec;
 use GraphViz2;
+use Data::Dumper;
+use Data::Undump;
 
 # Global entities configs
+my $title_label = "fuzzy named entity ontology";
 my %entities_configs = (
-  "PESSOA" => (color => "green"),
-  "CIDADE" => (color => "blue"),
-  "DATA" => (color => "red"),
-  "PAIS" => (color => "brown")
+"PESSOA" => (color => "green"),
+"CIDADE" => (color => "blue"),
+"DATA" => (color => "red"),
+"PAIS" => (color => "brown")
 );
+
+# ../graph.dump
+#my %graph =
+load_graph($ARGV[0]);
+
+#print Dumper \%graph;
+
+sub load_graph {
+  my ( $file ) = @_;
+  open(my $fh, "<", $file) or die "Can't open file ".$file." !\n";
+  while (<$fh>) {
+    chomp;
+    my $a = eval($_);
+    print $a->{'type'};
+  }
+}
+
+
+__END__
+
 
 my ($graph) = GraphViz2 -> new
 (
 edge   => {color => 'grey'},
 global => {directed => 0},
-graph  => {label => 'Adult', rankdir => 'TB'},
+graph  => {label => $title_label, rankdir => 'TB'},
 node   => {shape => 'oval'},
 );
+
+
 
 $graph -> add_node(name => 'Carnegie', shape => 'circle');
 $graph -> add_node(name => 'Murrumbeena', shape => 'box', color => 'green');
