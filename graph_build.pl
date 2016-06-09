@@ -43,7 +43,36 @@ foreach my $news (@nodeList)
 	}
 }
 
-print Dumper(\%grafo);
+#print Dumper(\%grafo);
+print graph_as_XML();
+
+sub graph_as_XML
+{
+	my $xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<graph>\n";
+
+	for my $key (keys %grafo)
+	{
+		$xml .= "<node>\n";
+		$xml .= "<entity>$key</entity>\n";
+		$xml .= "<type>$grafo{$key}{'type'}</type>\n";
+
+		$xml .= "<rels>\n";
+		for my $rel (keys %{$grafo{$key}{'rels'}})
+		{
+			$xml .= "<rel>";
+			$xml .= "<ent>$rel</ent>\n";
+			$xml .= "<weight>$grafo{$key}{'rels'}{$rel}</weight>\n";
+			$xml .= "</rel>\n";
+		}
+		$xml .= "</rels>\n";
+
+		$xml .= "</node>\n";
+	}
+
+	$xml .= "</graph>\n";
+
+	return $xml;
+}
 
 sub build_graph
 {
