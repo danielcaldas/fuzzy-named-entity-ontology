@@ -1,0 +1,1038 @@
+$VAR1 = {
+          "P\x{f3}voa de Lanhoso" => {
+                                 'rels' => {
+                                             'quinta-feira' => 3
+                                           },
+                                 'type' => 'CIDADE'
+                               },
+          "R\x{fa}ben Neves" => {
+                            'type' => 'PESSOA',
+                            'rels' => {
+                                        "Jos\x{e9} \x{c1}ngel" => 1,
+                                        'Francisco Ramos' => 2,
+                                        'Martins Indi' => 1,
+                                        "Jos\x{e9} Peseiro" => 1,
+                                        "Andr\x{e9} Andr\x{e9}" => 1,
+                                        'Dortmund' => 2,
+                                        'domingo' => 1,
+                                        'Evandro' => 1,
+                                        'Danilo' => 3,
+                                        "Jo\x{e3}o Costa" => 2,
+                                        "S\x{e9}rgio Oliveira" => 1
+                                      }
+                          },
+          'Danilo' => {
+                      'rels' => {
+                                  "Jo\x{e3}o Costa" => 3,
+                                  "R\x{fa}ben Neves" => 3,
+                                  'Evandro' => 3,
+                                  "S\x{e9}rgio Oliveira" => 3,
+                                  "Andr\x{e9} Andr\x{e9}" => 3,
+                                  "Jos\x{e9} \x{c1}ngel" => 3,
+                                  'Francisco Ramos' => 3,
+                                  "Jos\x{e9} Peseiro" => 2,
+                                  'Martins Indi' => 2,
+                                  'Dortmund' => 3,
+                                  'domingo' => 2
+                                },
+                      'type' => 'PESSOA'
+                    },
+          "ter\x{e7}a-feira" => {
+                            'rels' => {
+                                        'Jonas' => 1,
+                                        'domingo' => 1,
+                                        "Jo\x{e3}o G\x{f3}is" => 1,
+                                        'Stuart Wootton' => 1,
+                                        'Marco Baixinho' => 1,
+                                        "Manuel Jos\x{e9}" => 1,
+                                        "Andr\x{e9} Leal" => 1,
+                                        "J\x{fa}lio C\x{e9}sar" => 1,
+                                        'segunda-feira' => 1,
+                                        "H\x{e9}lder Lopes" => 1,
+                                        'Bruno MoreiraBenfica' => 1,
+                                        'Lucas Piazon' => 1,
+                                        'Michael Hector' => 1,
+                                        "Rodrigo Ant\x{f3}nio" => 1,
+                                        'Manchester City' => 1,
+                                        'Jorge Ferreira' => 1,
+                                        'Braga' => 1,
+                                        "Jorge Sim\x{e3}o" => 1,
+                                        'Diogo Jota' => 1,
+                                        "Pa\x{e7}os de Ferreira" => 1,
+                                        'Fletcher' => 1,
+                                        'Jardel' => 1,
+                                        'Bruno Santos' => 2,
+                                        'Rafael Defendi' => 1,
+                                        'Eliseu' => 1,
+                                        'Renato Sanches' => 1,
+                                        'Manchester United' => 1,
+                                        "Andr\x{e9} Almeida" => 1
+                                      },
+                            'type' => 'DATA'
+                          },
+          "Em\x{ed}lia" => {
+                       'type' => 'PESSOA',
+                       'rels' => {
+                                   "s\x{e1}bado" => 3,
+                                   'Barcelos' => 3,
+                                   'sexta-feira' => 4
+                                 }
+                     },
+          "Jo\x{e3}o Costa" => {
+                           'rels' => {
+                                       "S\x{e9}rgio Oliveira" => 1,
+                                       'Danilo' => 3,
+                                       'Evandro' => 1,
+                                       "R\x{fa}ben Neves" => 2,
+                                       'domingo' => 1,
+                                       'Dortmund' => 2,
+                                       "Jos\x{e9} \x{c1}ngel" => 1,
+                                       "Jos\x{e9} Peseiro" => 1,
+                                       'Francisco Ramos' => 2,
+                                       'Martins Indi' => 1,
+                                       "Andr\x{e9} Andr\x{e9}" => 1
+                                     },
+                           'type' => 'PESSOA'
+                         },
+          'Manchester City' => {
+                               'rels' => {
+                                           'Michael Hector' => 1,
+                                           'Lucas Piazon' => 1,
+                                           'segunda-feira' => 2,
+                                           'Manchester United' => 2,
+                                           "ter\x{e7}a-feira" => 1,
+                                           'domingo' => 2,
+                                           'Fletcher' => 1,
+                                           'Stuart Wootton' => 1
+                                         },
+                               'type' => 'CIDADE'
+                             },
+          'Braga' => {
+                     'rels' => {
+                                 "Andr\x{e9} Almeida" => 2,
+                                 'Renato Sanches' => 2,
+                                 'Eliseu' => 2,
+                                 'Bruno Santos' => 3,
+                                 'Rafael Defendi' => 2,
+                                 "Pa\x{e7}os de Ferreira" => 2,
+                                 'Jardel' => 2,
+                                 "Jorge Sim\x{e3}o" => 1,
+                                 'Diogo Jota' => 2,
+                                 "ter\x{e7}a-feira" => 1,
+                                 'Jorge Ferreira' => 2,
+                                 'Bruno MoreiraBenfica' => 2,
+                                 "H\x{e9}lder Lopes" => 2,
+                                 "Rodrigo Ant\x{f3}nio" => 2,
+                                 "Andr\x{e9} Leal" => 2,
+                                 'Marco Baixinho' => 2,
+                                 "Manuel Jos\x{e9}" => 2,
+                                 "J\x{fa}lio C\x{e9}sar" => 2,
+                                 "Jo\x{e3}o G\x{f3}is" => 2,
+                                 'Jonas' => 2
+                               },
+                     'type' => 'CIDADE'
+                   },
+          'David Cameron' => {
+                             'type' => 'PESSOA',
+                             'rels' => {
+                                         'sexta-feira' => 2,
+                                         'Reino Unido' => 2,
+                                         "s\x{e1}bado" => 2,
+                                         '23 de junho' => 2
+                                       }
+                           },
+          "H\x{e9}lder Lopes" => {
+                             'type' => 'PESSOA',
+                             'rels' => {
+                                         'Jardel' => 2,
+                                         "Pa\x{e7}os de Ferreira" => 2,
+                                         'Diogo Jota' => 2,
+                                         "Jorge Sim\x{e3}o" => 1,
+                                         'Renato Sanches' => 2,
+                                         "Andr\x{e9} Almeida" => 2,
+                                         'Eliseu' => 2,
+                                         'Rafael Defendi' => 2,
+                                         'Bruno Santos' => 3,
+                                         "J\x{fa}lio C\x{e9}sar" => 2,
+                                         "Manuel Jos\x{e9}" => 2,
+                                         'Marco Baixinho' => 2,
+                                         "Andr\x{e9} Leal" => 2,
+                                         'Jonas' => 2,
+                                         "Jo\x{e3}o G\x{f3}is" => 2,
+                                         'Braga' => 2,
+                                         'Jorge Ferreira' => 2,
+                                         "ter\x{e7}a-feira" => 1,
+                                         "Rodrigo Ant\x{f3}nio" => 2,
+                                         'Bruno MoreiraBenfica' => 2
+                                       }
+                           },
+          "Rui Vit\x{f3}ria" => {
+                            'type' => 'PESSOA',
+                            'rels' => {
+                                        'Jonas' => 2,
+                                        'Diogo Jota' => 1,
+                                        "s\x{e1}bado" => 2,
+                                        'segunda-feira' => 2,
+                                        "Pa\x{e7}os de Ferreira" => 1,
+                                        "Andr\x{e9} Leal" => 1
+                                      }
+                          },
+          'Michael Hector' => {
+                              'rels' => {
+                                          'Manchester United' => 1,
+                                          'Manchester City' => 1,
+                                          "ter\x{e7}a-feira" => 1,
+                                          'Lucas Piazon' => 2,
+                                          'segunda-feira' => 1,
+                                          'Fletcher' => 2,
+                                          'Stuart Wootton' => 1,
+                                          'domingo' => 1
+                                        },
+                              'type' => 'PESSOA'
+                            },
+          "Rodrigo Ant\x{f3}nio" => {
+                                'rels' => {
+                                            'Eliseu' => 2,
+                                            'Renato Sanches' => 2,
+                                            "Andr\x{e9} Almeida" => 2,
+                                            'Rafael Defendi' => 2,
+                                            'Bruno Santos' => 3,
+                                            'Jardel' => 2,
+                                            "Pa\x{e7}os de Ferreira" => 2,
+                                            'Diogo Jota' => 2,
+                                            "Jorge Sim\x{e3}o" => 1,
+                                            'Braga' => 2,
+                                            'Jorge Ferreira' => 2,
+                                            "ter\x{e7}a-feira" => 1,
+                                            "H\x{e9}lder Lopes" => 2,
+                                            'Bruno MoreiraBenfica' => 2,
+                                            "J\x{fa}lio C\x{e9}sar" => 2,
+                                            "Manuel Jos\x{e9}" => 2,
+                                            "Andr\x{e9} Leal" => 2,
+                                            'Marco Baixinho' => 2,
+                                            'Jonas' => 2,
+                                            "Jo\x{e3}o G\x{f3}is" => 2
+                                          },
+                                'type' => 'PESSOA'
+                              },
+          '25 de fevereiro de 1986' => {
+                                       'type' => 'DATA',
+                                       'rels' => {
+                                                   'Lisboa' => 2,
+                                                   'Lusa' => 1,
+                                                   'Carlos Saleiro' => 4,
+                                                   "Ant\x{f3}nio Pereira Coelho" => 3,
+                                                   'Portugal' => 1
+                                                 }
+                                     },
+          'Stuart Wootton' => {
+                              'rels' => {
+                                          'Manchester United' => 1,
+                                          'Manchester City' => 1,
+                                          "ter\x{e7}a-feira" => 1,
+                                          'segunda-feira' => 1,
+                                          'Lucas Piazon' => 1,
+                                          'Michael Hector' => 1,
+                                          'Fletcher' => 1,
+                                          'domingo' => 1
+                                        },
+                              'type' => 'PESSOA'
+                            },
+          'Dortmund' => {
+                        'type' => 'CIDADE',
+                        'rels' => {
+                                    'Evandro' => 1,
+                                    'Danilo' => 3,
+                                    "R\x{fa}ben Neves" => 2,
+                                    "Jo\x{e3}o Costa" => 2,
+                                    "S\x{e9}rgio Oliveira" => 1,
+                                    'Martins Indi' => 1,
+                                    "Jos\x{e9} \x{c1}ngel" => 1,
+                                    'Francisco Ramos' => 2,
+                                    "Jos\x{e9} Peseiro" => 1,
+                                    "Andr\x{e9} Andr\x{e9}" => 1,
+                                    'domingo' => 1
+                                  }
+                      },
+          "Andr\x{e9} Leal" => {
+                           'type' => 'PESSOA',
+                           'rels' => {
+                                       "Jorge Sim\x{e3}o" => 1,
+                                       'Diogo Jota' => 3,
+                                       "Pa\x{e7}os de Ferreira" => 2,
+                                       'Jardel' => 2,
+                                       'Bruno Santos' => 3,
+                                       'Rafael Defendi' => 2,
+                                       'Renato Sanches' => 2,
+                                       "Andr\x{e9} Almeida" => 2,
+                                       'Eliseu' => 2,
+                                       "Jo\x{e3}o G\x{f3}is" => 2,
+                                       'Jonas' => 5,
+                                       "Manuel Jos\x{e9}" => 2,
+                                       'Marco Baixinho' => 2,
+                                       "J\x{fa}lio C\x{e9}sar" => 2,
+                                       'Bruno MoreiraBenfica' => 2,
+                                       "Rui Vit\x{f3}ria" => 1,
+                                       'segunda-feira' => 1,
+                                       "H\x{e9}lder Lopes" => 2,
+                                       "Rodrigo Ant\x{f3}nio" => 2,
+                                       "ter\x{e7}a-feira" => 1,
+                                       'Jorge Ferreira' => 2,
+                                       'Braga' => 2
+                                     }
+                         },
+          'Bruxelas' => {
+                        'type' => 'CIDADE',
+                        'rels' => {
+                                    'quinta-feira' => 1,
+                                    'Reino Unido' => 1,
+                                    'junho' => 1,
+                                    "Litu\x{e2}nia" => 1,
+                                    'sexta-feira' => 5
+                                  }
+                      },
+          'Carlos Saleiro' => {
+                              'type' => 'PESSOA',
+                              'rels' => {
+                                          'Portugal' => 3,
+                                          '25 de fevereiro de 1986' => 4,
+                                          'Lisboa' => 4,
+                                          'Lusa' => 3,
+                                          "Ant\x{f3}nio Pereira Coelho" => 8
+                                        }
+                            },
+          'domingo' => {
+                       'type' => 'DATA',
+                       'rels' => {
+                                   "Andr\x{e9} Andr\x{e9}" => 1,
+                                   "Jos\x{e9} \x{c1}ngel" => 1,
+                                   'Francisco Ramos' => 1,
+                                   'Fletcher' => 1,
+                                   'Martins Indi' => 2,
+                                   "S\x{e9}rgio Oliveira" => 1,
+                                   'Evandro' => 1,
+                                   'Manchester United' => 2,
+                                   'Dortmund' => 1,
+                                   'Stuart Wootton' => 1,
+                                   "Jos\x{e9} Peseiro" => 3,
+                                   'Lucas Piazon' => 1,
+                                   'Michael Hector' => 1,
+                                   'segunda-feira' => 2,
+                                   'Manchester City' => 2,
+                                   "ter\x{e7}a-feira" => 1,
+                                   "Jo\x{e3}o Costa" => 1,
+                                   'Danilo' => 2,
+                                   "R\x{fa}ben Neves" => 1
+                                 }
+                     },
+          "Jo\x{e3}o G\x{f3}is" => {
+                           'rels' => {
+                                       'Rafael Defendi' => 2,
+                                       'Bruno Santos' => 3,
+                                       'Renato Sanches' => 2,
+                                       'Eliseu' => 2,
+                                       "Andr\x{e9} Almeida" => 2,
+                                       'Diogo Jota' => 2,
+                                       "Jorge Sim\x{e3}o" => 1,
+                                       'Jardel' => 2,
+                                       "Pa\x{e7}os de Ferreira" => 2,
+                                       "Rodrigo Ant\x{f3}nio" => 2,
+                                       "H\x{e9}lder Lopes" => 2,
+                                       'Bruno MoreiraBenfica' => 2,
+                                       'Braga' => 2,
+                                       'Jorge Ferreira' => 2,
+                                       "ter\x{e7}a-feira" => 1,
+                                       'Jonas' => 2,
+                                       "J\x{fa}lio C\x{e9}sar" => 2,
+                                       'Marco Baixinho' => 2,
+                                       "Manuel Jos\x{e9}" => 2,
+                                       "Andr\x{e9} Leal" => 2
+                                     },
+                           'type' => 'PESSOA'
+                         },
+          'Evandro' => {
+                       'rels' => {
+                                   "Jos\x{e9} Peseiro" => 1,
+                                   "Jos\x{e9} \x{c1}ngel" => 2,
+                                   'Francisco Ramos' => 1,
+                                   'Martins Indi' => 1,
+                                   "Andr\x{e9} Andr\x{e9}" => 2,
+                                   'Dortmund' => 1,
+                                   'domingo' => 1,
+                                   'Danilo' => 3,
+                                   "R\x{fa}ben Neves" => 1,
+                                   "Jo\x{e3}o Costa" => 1,
+                                   "S\x{e9}rgio Oliveira" => 2
+                                 },
+                       'type' => 'PESSOA'
+                     },
+          'junho' => {
+                     'type' => 'DATA',
+                     'rels' => {
+                                 'sexta-feira' => 2,
+                                 'Reino Unido' => 1,
+                                 'Bruxelas' => 1,
+                                 'quinta-feira' => 1
+                               }
+                   },
+          'Eliseu' => {
+                      'rels' => {
+                                  "Jo\x{e3}o G\x{f3}is" => 2,
+                                  'Jonas' => 2,
+                                  "J\x{fa}lio C\x{e9}sar" => 2,
+                                  "Manuel Jos\x{e9}" => 2,
+                                  'Marco Baixinho' => 2,
+                                  "Andr\x{e9} Leal" => 2,
+                                  "Rodrigo Ant\x{f3}nio" => 2,
+                                  'Bruno MoreiraBenfica' => 2,
+                                  "H\x{e9}lder Lopes" => 2,
+                                  'Braga' => 2,
+                                  'Jorge Ferreira' => 2,
+                                  "ter\x{e7}a-feira" => 1,
+                                  'Diogo Jota' => 2,
+                                  "Jorge Sim\x{e3}o" => 1,
+                                  'Jardel' => 2,
+                                  "Pa\x{e7}os de Ferreira" => 2,
+                                  'Rafael Defendi' => 2,
+                                  'Bruno Santos' => 3,
+                                  'Renato Sanches' => 2,
+                                  "Andr\x{e9} Almeida" => 2
+                                },
+                      'type' => 'PESSOA'
+                    },
+          "s\x{e1}bado" => {
+                       'rels' => {
+                                   "Pa\x{e7}os de Ferreira" => 3,
+                                   'sexta-feira' => 1,
+                                   'Diogo Jota' => 1,
+                                   'Jonas' => 1,
+                                   'Reino Unido' => 2,
+                                   "Em\x{ed}lia" => 3,
+                                   'Barcelos' => 1,
+                                   '23 de junho' => 2,
+                                   "Rui Vit\x{f3}ria" => 2,
+                                   'David Cameron' => 2
+                                 },
+                       'type' => 'DATA'
+                     },
+          'Bruno Santos' => {
+                            'rels' => {
+                                        "Jo\x{e3}o G\x{f3}is" => 3,
+                                        'Jonas' => 3,
+                                        "Andr\x{e9} Leal" => 3,
+                                        'Marco Baixinho' => 3,
+                                        "Manuel Jos\x{e9}" => 3,
+                                        "J\x{fa}lio C\x{e9}sar" => 3,
+                                        'Bruno MoreiraBenfica' => 3,
+                                        "H\x{e9}lder Lopes" => 3,
+                                        "Rodrigo Ant\x{f3}nio" => 3,
+                                        "ter\x{e7}a-feira" => 2,
+                                        'Braga' => 3,
+                                        'Jorge Ferreira' => 3,
+                                        "Jorge Sim\x{e3}o" => 3,
+                                        'Diogo Jota' => 3,
+                                        "Pa\x{e7}os de Ferreira" => 3,
+                                        'Jardel' => 3,
+                                        'Rafael Defendi' => 3,
+                                        'Renato Sanches' => 3,
+                                        'Eliseu' => 3,
+                                        "Andr\x{e9} Almeida" => 3
+                                      },
+                            'type' => 'PESSOA'
+                          },
+          "Pa\x{e7}os de Ferreira" => {
+                                  'rels' => {
+                                              'Jonas' => 3,
+                                              "Jo\x{e3}o G\x{f3}is" => 2,
+                                              "Andr\x{e9} Leal" => 2,
+                                              "Manuel Jos\x{e9}" => 2,
+                                              'Marco Baixinho' => 2,
+                                              "J\x{fa}lio C\x{e9}sar" => 2,
+                                              "Rui Vit\x{f3}ria" => 1,
+                                              "H\x{e9}lder Lopes" => 2,
+                                              'Bruno MoreiraBenfica' => 2,
+                                              "Rodrigo Ant\x{f3}nio" => 2,
+                                              "ter\x{e7}a-feira" => 1,
+                                              'Jorge Ferreira' => 2,
+                                              'Braga' => 2,
+                                              "Jorge Sim\x{e3}o" => 1,
+                                              'Diogo Jota' => 3,
+                                              'Jardel' => 2,
+                                              "s\x{e1}bado" => 3,
+                                              'Bruno Santos' => 3,
+                                              'Rafael Defendi' => 2,
+                                              'Eliseu' => 2,
+                                              'Renato Sanches' => 2,
+                                              "Andr\x{e9} Almeida" => 2
+                                            },
+                                  'type' => 'CIDADE'
+                                },
+          'Fletcher' => {
+                        'type' => 'PESSOA',
+                        'rels' => {
+                                    'Stuart Wootton' => 1,
+                                    'domingo' => 1,
+                                    'Manchester United' => 1,
+                                    'Manchester City' => 1,
+                                    "ter\x{e7}a-feira" => 1,
+                                    'segunda-feira' => 1,
+                                    'Michael Hector' => 2,
+                                    'Lucas Piazon' => 2
+                                  }
+                      },
+          "Jos\x{e9} \x{c1}ngel" => {
+                            'rels' => {
+                                        "S\x{e9}rgio Oliveira" => 2,
+                                        "Jo\x{e3}o Costa" => 1,
+                                        "R\x{fa}ben Neves" => 1,
+                                        'Evandro' => 2,
+                                        'Danilo' => 3,
+                                        'domingo' => 1,
+                                        "Andr\x{e9} Andr\x{e9}" => 2,
+                                        'Francisco Ramos' => 1,
+                                        'Martins Indi' => 1,
+                                        "Jos\x{e9} Peseiro" => 1,
+                                        'Dortmund' => 1
+                                      },
+                            'type' => 'PESSOA'
+                          },
+          'Lusa' => {
+                    'type' => 'PESSOA',
+                    'rels' => {
+                                'Lisboa' => 1,
+                                "Ant\x{f3}nio Pereira Coelho" => 2,
+                                'Carlos Saleiro' => 3,
+                                '25 de fevereiro de 1986' => 1,
+                                'Portugal' => 1
+                              }
+                  },
+          'Lisboa' => {
+                      'type' => 'CIDADE',
+                      'rels' => {
+                                  'Portugal' => 1,
+                                  '25 de fevereiro de 1986' => 2,
+                                  'Lusa' => 1,
+                                  "Ant\x{f3}nio Pereira Coelho" => 3,
+                                  'Carlos Saleiro' => 4
+                                }
+                    },
+          "Andr\x{e9} Andr\x{e9}" => {
+                             'rels' => {
+                                         'Dortmund' => 1,
+                                         "Jos\x{e9} \x{c1}ngel" => 2,
+                                         'Martins Indi' => 1,
+                                         'Francisco Ramos' => 1,
+                                         "Jos\x{e9} Peseiro" => 1,
+                                         'domingo' => 1,
+                                         'Danilo' => 3,
+                                         'Evandro' => 2,
+                                         "R\x{fa}ben Neves" => 1,
+                                         "Jo\x{e3}o Costa" => 1,
+                                         "S\x{e9}rgio Oliveira" => 2
+                                       },
+                             'type' => 'PESSOA'
+                           },
+          'Diogo Jota' => {
+                          'type' => 'PESSOA',
+                          'rels' => {
+                                      "Andr\x{e9} Leal" => 3,
+                                      "Manuel Jos\x{e9}" => 2,
+                                      'Marco Baixinho' => 2,
+                                      "J\x{fa}lio C\x{e9}sar" => 2,
+                                      'Jonas' => 6,
+                                      "Jo\x{e3}o G\x{f3}is" => 2,
+                                      "ter\x{e7}a-feira" => 1,
+                                      'Jorge Ferreira' => 2,
+                                      'Braga' => 2,
+                                      'segunda-feira' => 1,
+                                      "Rui Vit\x{f3}ria" => 1,
+                                      "H\x{e9}lder Lopes" => 2,
+                                      'Bruno MoreiraBenfica' => 2,
+                                      "Rodrigo Ant\x{f3}nio" => 2,
+                                      "Pa\x{e7}os de Ferreira" => 3,
+                                      'Jardel' => 2,
+                                      "Jorge Sim\x{e3}o" => 1,
+                                      'Renato Sanches' => 2,
+                                      "Andr\x{e9} Almeida" => 2,
+                                      'Eliseu' => 2,
+                                      "s\x{e1}bado" => 1,
+                                      'Bruno Santos' => 3,
+                                      'Rafael Defendi' => 2
+                                    }
+                        },
+          'Jorge Ferreira' => {
+                              'type' => 'PESSOA',
+                              'rels' => {
+                                          "Andr\x{e9} Almeida" => 2,
+                                          'Renato Sanches' => 2,
+                                          'Eliseu' => 2,
+                                          'Bruno Santos' => 3,
+                                          'Rafael Defendi' => 2,
+                                          "Pa\x{e7}os de Ferreira" => 2,
+                                          'Jardel' => 2,
+                                          "Jorge Sim\x{e3}o" => 1,
+                                          'Diogo Jota' => 2,
+                                          "ter\x{e7}a-feira" => 1,
+                                          'Braga' => 2,
+                                          'Bruno MoreiraBenfica' => 2,
+                                          "H\x{e9}lder Lopes" => 2,
+                                          "Rodrigo Ant\x{f3}nio" => 2,
+                                          'Marco Baixinho' => 2,
+                                          "Andr\x{e9} Leal" => 2,
+                                          "Manuel Jos\x{e9}" => 2,
+                                          "J\x{fa}lio C\x{e9}sar" => 2,
+                                          "Jo\x{e3}o G\x{f3}is" => 2,
+                                          'Jonas' => 2
+                                        }
+                            },
+          'segunda-feira' => {
+                             'type' => 'DATA',
+                             'rels' => {
+                                         "Rui Vit\x{f3}ria" => 2,
+                                         'Lucas Piazon' => 1,
+                                         'Michael Hector' => 1,
+                                         'Manchester United' => 2,
+                                         "ter\x{e7}a-feira" => 1,
+                                         'Manchester City' => 2,
+                                         'domingo' => 2,
+                                         'Jonas' => 2,
+                                         'Diogo Jota' => 1,
+                                         'Fletcher' => 1,
+                                         'Stuart Wootton' => 1,
+                                         "Andr\x{e9} Leal" => 1
+                                       }
+                           },
+          'Bruno MoreiraBenfica' => {
+                                    'type' => 'PESSOA',
+                                    'rels' => {
+                                                'Jardel' => 2,
+                                                "Pa\x{e7}os de Ferreira" => 2,
+                                                'Diogo Jota' => 2,
+                                                "Jorge Sim\x{e3}o" => 1,
+                                                'Renato Sanches' => 2,
+                                                "Andr\x{e9} Almeida" => 2,
+                                                'Eliseu' => 2,
+                                                'Rafael Defendi' => 2,
+                                                'Bruno Santos' => 3,
+                                                "J\x{fa}lio C\x{e9}sar" => 2,
+                                                'Marco Baixinho' => 2,
+                                                "Andr\x{e9} Leal" => 2,
+                                                "Manuel Jos\x{e9}" => 2,
+                                                "Jo\x{e3}o G\x{f3}is" => 2,
+                                                'Jonas' => 2,
+                                                'Jorge Ferreira' => 2,
+                                                'Braga' => 2,
+                                                "ter\x{e7}a-feira" => 1,
+                                                "Rodrigo Ant\x{f3}nio" => 2,
+                                                "H\x{e9}lder Lopes" => 2
+                                              }
+                                  },
+          '23 de junho' => {
+                           'type' => 'DATA',
+                           'rels' => {
+                                       'Reino Unido' => 2,
+                                       'David Cameron' => 2,
+                                       "s\x{e1}bado" => 2
+                                     }
+                         },
+          'Lucas Piazon' => {
+                            'rels' => {
+                                        'Stuart Wootton' => 1,
+                                        'Fletcher' => 2,
+                                        'domingo' => 1,
+                                        'Manchester City' => 1,
+                                        "ter\x{e7}a-feira" => 1,
+                                        'Manchester United' => 1,
+                                        'segunda-feira' => 1,
+                                        'Michael Hector' => 2
+                                      },
+                            'type' => 'PESSOA'
+                          },
+          'Marco Baixinho' => {
+                              'type' => 'PESSOA',
+                              'rels' => {
+                                          'Bruno Santos' => 3,
+                                          'Rafael Defendi' => 2,
+                                          'Eliseu' => 2,
+                                          'Renato Sanches' => 2,
+                                          "Andr\x{e9} Almeida" => 2,
+                                          "Jorge Sim\x{e3}o" => 1,
+                                          'Diogo Jota' => 2,
+                                          "Pa\x{e7}os de Ferreira" => 2,
+                                          'Jardel' => 2,
+                                          "H\x{e9}lder Lopes" => 2,
+                                          'Bruno MoreiraBenfica' => 2,
+                                          "Rodrigo Ant\x{f3}nio" => 2,
+                                          "ter\x{e7}a-feira" => 1,
+                                          'Braga' => 2,
+                                          'Jorge Ferreira' => 2,
+                                          'Jonas' => 2,
+                                          "Jo\x{e3}o G\x{f3}is" => 2,
+                                          "Manuel Jos\x{e9}" => 2,
+                                          "Andr\x{e9} Leal" => 2,
+                                          "J\x{fa}lio C\x{e9}sar" => 2
+                                        }
+                            },
+          "Manuel Jos\x{e9}" => {
+                            'rels' => {
+                                        'Bruno Santos' => 3,
+                                        'Rafael Defendi' => 2,
+                                        "Andr\x{e9} Almeida" => 2,
+                                        'Renato Sanches' => 2,
+                                        'Eliseu' => 2,
+                                        "Jorge Sim\x{e3}o" => 1,
+                                        'Diogo Jota' => 2,
+                                        "Pa\x{e7}os de Ferreira" => 2,
+                                        'Jardel' => 2,
+                                        "H\x{e9}lder Lopes" => 2,
+                                        'Bruno MoreiraBenfica' => 2,
+                                        "Rodrigo Ant\x{f3}nio" => 2,
+                                        "ter\x{e7}a-feira" => 1,
+                                        'Braga' => 2,
+                                        'Jorge Ferreira' => 2,
+                                        'Jonas' => 2,
+                                        "Jo\x{e3}o G\x{f3}is" => 2,
+                                        "Andr\x{e9} Leal" => 2,
+                                        'Marco Baixinho' => 2,
+                                        "J\x{fa}lio C\x{e9}sar" => 2
+                                      },
+                            'type' => 'PESSOA'
+                          },
+          "Jos\x{e9} Peseiro" => {
+                             'rels' => {
+                                         'Dortmund' => 1,
+                                         "Andr\x{e9} Andr\x{e9}" => 1,
+                                         'Martins Indi' => 1,
+                                         "Jos\x{e9} \x{c1}ngel" => 1,
+                                         'Francisco Ramos' => 1,
+                                         'domingo' => 3,
+                                         "Jo\x{e3}o Costa" => 1,
+                                         'Evandro' => 1,
+                                         "R\x{fa}ben Neves" => 1,
+                                         'Danilo' => 2,
+                                         "S\x{e9}rgio Oliveira" => 1
+                                       },
+                             'type' => 'PESSOA'
+                           },
+          'janeiro de 2020' => {
+                               'type' => 'DATA',
+                               'rels' => {
+                                           "Litu\x{e2}nia" => 1,
+                                           'Reino Unido' => 3
+                                         }
+                             },
+          "J\x{fa}lio C\x{e9}sar" => {
+                             'type' => 'PESSOA',
+                             'rels' => {
+                                         'Jonas' => 2,
+                                         "Jo\x{e3}o G\x{f3}is" => 2,
+                                         'Marco Baixinho' => 2,
+                                         "Manuel Jos\x{e9}" => 2,
+                                         "Andr\x{e9} Leal" => 2,
+                                         "H\x{e9}lder Lopes" => 2,
+                                         'Bruno MoreiraBenfica' => 2,
+                                         "Rodrigo Ant\x{f3}nio" => 2,
+                                         "ter\x{e7}a-feira" => 1,
+                                         'Jorge Ferreira' => 2,
+                                         'Braga' => 2,
+                                         "Jorge Sim\x{e3}o" => 1,
+                                         'Diogo Jota' => 2,
+                                         "Pa\x{e7}os de Ferreira" => 2,
+                                         'Jardel' => 2,
+                                         'Bruno Santos' => 3,
+                                         'Rafael Defendi' => 2,
+                                         'Eliseu' => 2,
+                                         'Renato Sanches' => 2,
+                                         "Andr\x{e9} Almeida" => 2
+                                       }
+                           },
+          'quinta-feira' => {
+                            'rels' => {
+                                        'sexta-feira' => 3,
+                                        "P\x{f3}voa de Lanhoso" => 3,
+                                        'Reino Unido' => 2,
+                                        'Bruxelas' => 1,
+                                        'junho' => 1
+                                      },
+                            'type' => 'DATA'
+                          },
+          'Jonas' => {
+                     'type' => 'PESSOA',
+                     'rels' => {
+                                 'Rafael Defendi' => 2,
+                                 'Bruno Santos' => 3,
+                                 "s\x{e1}bado" => 1,
+                                 'Renato Sanches' => 2,
+                                 "Andr\x{e9} Almeida" => 2,
+                                 'Eliseu' => 2,
+                                 'Diogo Jota' => 6,
+                                 "Jorge Sim\x{e3}o" => 1,
+                                 'Jardel' => 2,
+                                 "Pa\x{e7}os de Ferreira" => 3,
+                                 "Rodrigo Ant\x{f3}nio" => 2,
+                                 'Bruno MoreiraBenfica' => 2,
+                                 'segunda-feira' => 2,
+                                 "H\x{e9}lder Lopes" => 2,
+                                 "Rui Vit\x{f3}ria" => 2,
+                                 'Jorge Ferreira' => 2,
+                                 'Braga' => 2,
+                                 "ter\x{e7}a-feira" => 1,
+                                 "Jo\x{e3}o G\x{f3}is" => 2,
+                                 "J\x{fa}lio C\x{e9}sar" => 2,
+                                 "Andr\x{e9} Leal" => 5,
+                                 'Marco Baixinho' => 2,
+                                 "Manuel Jos\x{e9}" => 2
+                               }
+                   },
+          'Portugal' => {
+                        'rels' => {
+                                    'Lusa' => 1,
+                                    'Lisboa' => 1,
+                                    "Ant\x{f3}nio Pereira Coelho" => 2,
+                                    'Carlos Saleiro' => 3,
+                                    '25 de fevereiro de 1986' => 1
+                                  },
+                        'type' => 'PAIS'
+                      },
+          'Reino Unido' => {
+                           'type' => 'PAIS',
+                           'rels' => {
+                                       'David Cameron' => 2,
+                                       "s\x{e1}bado" => 2,
+                                       '23 de junho' => 2,
+                                       'junho' => 1,
+                                       'quinta-feira' => 2,
+                                       'Bruxelas' => 1,
+                                       "Litu\x{e2}nia" => 3,
+                                       'sexta-feira' => 6,
+                                       'janeiro de 2020' => 3
+                                     }
+                         },
+          'Manchester United' => {
+                                 'rels' => {
+                                             'Lucas Piazon' => 1,
+                                             'Michael Hector' => 1,
+                                             'segunda-feira' => 2,
+                                             'Manchester City' => 2,
+                                             "ter\x{e7}a-feira" => 1,
+                                             'domingo' => 2,
+                                             'Stuart Wootton' => 1,
+                                             'Fletcher' => 1
+                                           },
+                                 'type' => 'CIDADE'
+                               },
+          "Andr\x{e9} Almeida" => {
+                              'rels' => {
+                                          "Jo\x{e3}o G\x{f3}is" => 2,
+                                          'Jonas' => 2,
+                                          "J\x{fa}lio C\x{e9}sar" => 2,
+                                          'Marco Baixinho' => 2,
+                                          "Manuel Jos\x{e9}" => 2,
+                                          "Andr\x{e9} Leal" => 2,
+                                          "Rodrigo Ant\x{f3}nio" => 2,
+                                          'Bruno MoreiraBenfica' => 2,
+                                          "H\x{e9}lder Lopes" => 2,
+                                          'Jorge Ferreira' => 2,
+                                          'Braga' => 2,
+                                          "ter\x{e7}a-feira" => 1,
+                                          'Diogo Jota' => 2,
+                                          "Jorge Sim\x{e3}o" => 1,
+                                          'Jardel' => 2,
+                                          "Pa\x{e7}os de Ferreira" => 2,
+                                          'Rafael Defendi' => 2,
+                                          'Bruno Santos' => 3,
+                                          'Eliseu' => 2,
+                                          'Renato Sanches' => 2
+                                        },
+                              'type' => 'PESSOA'
+                            },
+          'Renato Sanches' => {
+                              'rels' => {
+                                          'Jonas' => 2,
+                                          "Jo\x{e3}o G\x{f3}is" => 2,
+                                          'Marco Baixinho' => 2,
+                                          "Manuel Jos\x{e9}" => 2,
+                                          "Andr\x{e9} Leal" => 2,
+                                          "J\x{fa}lio C\x{e9}sar" => 2,
+                                          "H\x{e9}lder Lopes" => 2,
+                                          'Bruno MoreiraBenfica' => 2,
+                                          "Rodrigo Ant\x{f3}nio" => 2,
+                                          "ter\x{e7}a-feira" => 1,
+                                          'Braga' => 2,
+                                          'Jorge Ferreira' => 2,
+                                          "Jorge Sim\x{e3}o" => 1,
+                                          'Diogo Jota' => 2,
+                                          "Pa\x{e7}os de Ferreira" => 2,
+                                          'Jardel' => 2,
+                                          'Bruno Santos' => 3,
+                                          'Rafael Defendi' => 2,
+                                          'Eliseu' => 2,
+                                          "Andr\x{e9} Almeida" => 2
+                                        },
+                              'type' => 'PESSOA'
+                            },
+          "Ant\x{f3}nio Pereira Coelho" => {
+                                       'rels' => {
+                                                   'Lisboa' => 3,
+                                                   'Lusa' => 2,
+                                                   'Carlos Saleiro' => 8,
+                                                   '25 de fevereiro de 1986' => 3,
+                                                   'Portugal' => 2
+                                                 },
+                                       'type' => 'PESSOA'
+                                     },
+          'Barcelos' => {
+                        'type' => 'CIDADE',
+                        'rels' => {
+                                    "s\x{e1}bado" => 1,
+                                    'sexta-feira' => 1,
+                                    "Em\x{ed}lia" => 3
+                                  }
+                      },
+          "S\x{e9}rgio Oliveira" => {
+                                'type' => 'PESSOA',
+                                'rels' => {
+                                            'Danilo' => 3,
+                                            'Evandro' => 2,
+                                            "R\x{fa}ben Neves" => 1,
+                                            "Jo\x{e3}o Costa" => 1,
+                                            'domingo' => 1,
+                                            'Dortmund' => 1,
+                                            'Martins Indi' => 1,
+                                            "Jos\x{e9} \x{c1}ngel" => 2,
+                                            'Francisco Ramos' => 1,
+                                            "Jos\x{e9} Peseiro" => 1,
+                                            "Andr\x{e9} Andr\x{e9}" => 2
+                                          }
+                              },
+          'Rafael Defendi' => {
+                              'type' => 'PESSOA',
+                              'rels' => {
+                                          'Renato Sanches' => 2,
+                                          "Andr\x{e9} Almeida" => 2,
+                                          'Eliseu' => 2,
+                                          'Bruno Santos' => 3,
+                                          "Pa\x{e7}os de Ferreira" => 2,
+                                          'Jardel' => 2,
+                                          "Jorge Sim\x{e3}o" => 1,
+                                          'Diogo Jota' => 2,
+                                          "ter\x{e7}a-feira" => 1,
+                                          'Braga' => 2,
+                                          'Jorge Ferreira' => 2,
+                                          "H\x{e9}lder Lopes" => 2,
+                                          'Bruno MoreiraBenfica' => 2,
+                                          "Rodrigo Ant\x{f3}nio" => 2,
+                                          'Marco Baixinho' => 2,
+                                          "Andr\x{e9} Leal" => 2,
+                                          "Manuel Jos\x{e9}" => 2,
+                                          "J\x{fa}lio C\x{e9}sar" => 2,
+                                          'Jonas' => 2,
+                                          "Jo\x{e3}o G\x{f3}is" => 2
+                                        }
+                            },
+          "Litu\x{e2}nia" => {
+                         'rels' => {
+                                     'Bruxelas' => 1,
+                                     'Reino Unido' => 3,
+                                     'janeiro de 2020' => 1,
+                                     'sexta-feira' => 2
+                                   },
+                         'type' => 'PAIS'
+                       },
+          'Jardel' => {
+                      'rels' => {
+                                  "Rodrigo Ant\x{f3}nio" => 2,
+                                  "H\x{e9}lder Lopes" => 2,
+                                  'Bruno MoreiraBenfica' => 2,
+                                  'Jorge Ferreira' => 2,
+                                  'Braga' => 2,
+                                  "ter\x{e7}a-feira" => 1,
+                                  'Jonas' => 2,
+                                  "Jo\x{e3}o G\x{f3}is" => 2,
+                                  "J\x{fa}lio C\x{e9}sar" => 2,
+                                  "Manuel Jos\x{e9}" => 2,
+                                  "Andr\x{e9} Leal" => 2,
+                                  'Marco Baixinho' => 2,
+                                  'Rafael Defendi' => 2,
+                                  'Bruno Santos' => 3,
+                                  'Eliseu' => 2,
+                                  'Renato Sanches' => 2,
+                                  "Andr\x{e9} Almeida" => 2,
+                                  'Diogo Jota' => 2,
+                                  "Jorge Sim\x{e3}o" => 1,
+                                  "Pa\x{e7}os de Ferreira" => 2
+                                },
+                      'type' => 'PESSOA'
+                    },
+          'sexta-feira' => {
+                           'rels' => {
+                                       'David Cameron' => 2,
+                                       "s\x{e1}bado" => 1,
+                                       'Barcelos' => 1,
+                                       'junho' => 2,
+                                       'Reino Unido' => 6,
+                                       "Em\x{ed}lia" => 4,
+                                       'quinta-feira' => 3,
+                                       "Litu\x{e2}nia" => 2,
+                                       'Bruxelas' => 5
+                                     },
+                           'type' => 'DATA'
+                         },
+          'Francisco Ramos' => {
+                               'type' => 'PESSOA',
+                               'rels' => {
+                                           'Dortmund' => 2,
+                                           'Martins Indi' => 1,
+                                           "Jos\x{e9} \x{c1}ngel" => 1,
+                                           "Jos\x{e9} Peseiro" => 1,
+                                           "Andr\x{e9} Andr\x{e9}" => 1,
+                                           'domingo' => 1,
+                                           "R\x{fa}ben Neves" => 2,
+                                           'Evandro' => 1,
+                                           'Danilo' => 3,
+                                           "Jo\x{e3}o Costa" => 2,
+                                           "S\x{e9}rgio Oliveira" => 1
+                                         }
+                             },
+          'Martins Indi' => {
+                            'rels' => {
+                                        'Danilo' => 2,
+                                        'Evandro' => 1,
+                                        "R\x{fa}ben Neves" => 1,
+                                        "Jo\x{e3}o Costa" => 1,
+                                        "S\x{e9}rgio Oliveira" => 1,
+                                        "Jos\x{e9} \x{c1}ngel" => 1,
+                                        "Jos\x{e9} Peseiro" => 1,
+                                        'Francisco Ramos' => 1,
+                                        "Andr\x{e9} Andr\x{e9}" => 1,
+                                        'Dortmund' => 1,
+                                        'domingo' => 2
+                                      },
+                            'type' => 'PESSOA'
+                          },
+          "Jorge Sim\x{e3}o" => {
+                            'type' => 'PESSOA',
+                            'rels' => {
+                                        'Rafael Defendi' => 1,
+                                        'Bruno Santos' => 3,
+                                        'Renato Sanches' => 1,
+                                        'Eliseu' => 1,
+                                        "Andr\x{e9} Almeida" => 1,
+                                        'Diogo Jota' => 1,
+                                        'Jardel' => 1,
+                                        "Pa\x{e7}os de Ferreira" => 1,
+                                        "Rodrigo Ant\x{f3}nio" => 1,
+                                        'Bruno MoreiraBenfica' => 1,
+                                        "H\x{e9}lder Lopes" => 1,
+                                        'Braga' => 1,
+                                        'Jorge Ferreira' => 1,
+                                        "ter\x{e7}a-feira" => 1,
+                                        "Jo\x{e3}o G\x{f3}is" => 1,
+                                        'Jonas' => 1,
+                                        "J\x{fa}lio C\x{e9}sar" => 1,
+                                        "Manuel Jos\x{e9}" => 1,
+                                        'Marco Baixinho' => 1,
+                                        "Andr\x{e9} Leal" => 1
+                                      }
+                          }
+        };
