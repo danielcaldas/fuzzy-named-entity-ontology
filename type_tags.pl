@@ -13,6 +13,9 @@ my %cidades_pt = load_gazeteer('./Gazeteer/cidades_portuguesas.txt');
 my %cidades_an = load_gazeteer('./Gazeteer/cidades_angolanas.txt');
 my %nomes = load_gazeteer('./Gazeteer/nomes.txt');
 
+# Dicionario
+my $dic = Lingua::Jspell->new("pt");
+
 # Parse XML igual ao anterior
 my $xml_src = $ARGV[0];
 
@@ -77,23 +80,23 @@ sub rec_type
 
 	if($tag =~ /NP0000/)
 	{
-		if(in_gazeteer($ent,\%paises)) 
+		if(in_gazeteer($ent,\%paises) or in_jspell($ent,$dic,'country')) 
 		{ 
 			$type = 'PAIS'; 
 		}
 
-		if(in_gazeteer($ent,\%cidades_pt)) 
+		if(in_gazeteer($ent,\%cidades_pt) or in_jspell($ent,$dic,'cid')) 
 		{ 
 			$type = 'CIDADE'; 
 		}
 		
-		if(in_gazeteer($ent,\%cidades_an)) 
+		if(in_gazeteer($ent,\%cidades_an) or in_jspell($ent,$dic,'cid')) 
 		{ 
 			$type = 'CIDADE'; 
 		}
 		
 		my $firstword = (split(/ /,$ent))[0];
-		if(in_gazeteer($firstword,\%nomes)) 
+		if(in_gazeteer($firstword,\%nomes) or in_jspell($ent,$dic,'p')) 
 		{ 
 			$type = 'PESSOA'; 
 		}
@@ -104,6 +107,25 @@ sub rec_type
 	}
 
 	return $type;
+}
+
+sub in_jspell
+{
+	my $ent = shift;
+	my $dic = shift;
+	my $sem = shift;
+
+	my @forms = $dic->fea($ent);
+	my %form = %{$forms[0]};
+	
+	if($form{'CAT'} =~ /np/ and $form{'SEM'} =~ /$sem/)
+	{
+		return 1;
+	}
+	else 
+	{
+		return 0;
+	}
 }
 
 sub in_gazeteer
