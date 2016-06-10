@@ -48,11 +48,11 @@ for my $k (keys %graph_content) {
 
 # Generate and Pop up graph
 my($format)      = shift || 'svg';
-my($output_file) = shift || File::Spec -> catfile('html', "sub.graph.$format");
+my($output_file) = shift || File::Spec -> catfile('out', "sub.graph.$format");
 
 $graph -> run(format => $format, output_file => $output_file);
 
-exec("eog html/sub.graph.$format");
+exec("eog out/sub.graph.$format");
 
 
 sub load_xml_graph {
