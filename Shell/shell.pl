@@ -34,11 +34,21 @@ print "> ";
 while(<>) {
   chomp $_;
   my @command = split / /, $_;
-  print Dumper(\@command);
   if($command[0] eq "list") {
     if($command[1] eq "entidades") {
       list_entities();
     }
+  }
+  if($command[0] eq "dump") {
+    if( !($command[1] eq "") ) {
+      dump_entity($command[1]);
+    } else {
+      print "\n\tFalta um argumento (nome da entidade substituindo os espaços por _)\n";
+    }
+  }
+  elsif($command[0] eq "help") {
+    print "\n\tlist entidades - listar entidades e respetivo tipo\n";
+    print "\tdump nome_da_entidade - mostrar detalhe de uma dada entidade (se o nome da entidade tiver espacos substituir por _)\n";
   }
   print "\n> ";
 }
@@ -47,6 +57,18 @@ while(<>) {
 sub list_entities {
   for my $k (keys %graph_content) {
       print "$k  ".$graph_content{$k}{type}."\n";
+  }
+}
+
+# Dump some entity by name
+sub dump_entity {
+  my $ent = shift;
+  $ent =~ s/_/ /g;
+  if(exists $graph_content{$ent}) {
+
+    print Dumper(\%{$graph_content{$ent}});
+  } else {
+    print "\n\tA entidade [$ent] não existe.\n";
   }
 }
 
