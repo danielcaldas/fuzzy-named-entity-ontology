@@ -1,8 +1,8 @@
 #!/usr/bin/env perl
 
 use strict;
-use warnings;
-#no warnings "all";
+#use warnings;
+no warnings "all";
 use File::Spec;
 use GraphViz2;
 use Data::Dumper;
@@ -23,6 +23,7 @@ my %entities_configs = (
 
 # Load graph into mem
 my %graph_content = load_xml_graph("../graph.xml");
+my %graph_nodes;
 
 my ($graph) = GraphViz2 -> new
 (
@@ -53,7 +54,7 @@ while(<>) {
     my $depth = 1;
     if(exists $graph_content{$command[1]}) {
       if($command[2]) {
-        $depth = $command[2];
+        $depth += $command[2];
       }
       draw_entity_graph($command[1],$depth);
     }
@@ -89,10 +90,10 @@ sub dump_entity {
 # Draw the graph for a certain entity with a given depth
 sub draw_entity_graph {
   my ($ent,$depth) = @_;
-
   my %ent_rels = %{$graph_content{$ent}{rels}};
   my $etype = $graph_content{$ent}{type};
   $graph->add_node(name => $ent, shape => $entities_configs{$etype}{shape}, color => $entities_configs{$etype}{color});
+  $graph_nodes{$ent}++;
   for my $k (keys %ent_rels) {
     if($depth > 0) {
       draw_entity_graph_nodes($k,$depth);
@@ -105,12 +106,16 @@ sub draw_entity_graph {
 sub draw_entity_graph_nodes {
   my ($ent,$depth) = @_;
   my $etype = $graph_content{$ent}{type};
-  print "$ent $etype\n";
   if($depth > 0) {
-    $graph->add_node(name => $ent, shape => $entities_configs{$etype}{shape}, color => $entities_configs{$etype}{color});
-    my %ent_rels = %{$graph_content{$ent}{rels}};
-    for my $rel (keys %ent_rels) {
-      draw_entity_graph_nodes($rel,$depth-1);
+    if(!(exists $graph_nodes{$ent})) {
+      $graph->add_node(name => $ent, shape => $entities_configs{$etype}{shape}, color => $entities_configs{$etype}{color});
+      $graph_nodes{$ent}++;
+    }
+    if($depth > 1) {
+      my %ent_rels = %{$graph_content{$ent}{rels}};
+      for my $rel (keys %ent_rels) {
+        draw_entity_graph_nodes($rel,$depth-1);
+      }
     }
   }
 }
