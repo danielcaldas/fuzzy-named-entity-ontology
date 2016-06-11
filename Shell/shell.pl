@@ -2,12 +2,17 @@
 
 use strict;
 use warnings;
+#no warnings "all";
 use File::Spec;
 use GraphViz2;
 use Data::Dumper;
 use XML::LibXML;
+use Parallel::ForkManager;
+
+my $MAX_PROCESSES = 5;
 
 # Global entities configs
+my $pm = Parallel::ForkManager->new($MAX_PROCESSES);
 my $title_label = "fuzzy named entity ontology";
 my %entities_configs = (
 "PESSOA" => { color => "green", shape => "circle" },
@@ -18,8 +23,6 @@ my %entities_configs = (
 
 # Load graph into mem
 my %graph_content = load_xml_graph("../graph.xml");
-
-# print Dumper \%graph;
 
 my ($graph) = GraphViz2 -> new
 (
@@ -43,7 +46,19 @@ while(<>) {
     if( !($command[1] eq "") ) {
       dump_entity($command[1]);
     } else {
-      print "\n\tFalta um argumento (nome da entidade substituindo os espaços por _)\n";
+      print "\n\tFalta um argumento (nome da entidade substituindo os espacos por _)\n";
+    }
+  }
+  elsif($command[0] eq "graph") {
+    my $depth = 1;
+    if(exists $graph_content{$command[1]}) {
+      if($command[2]) {
+        $depth = $command[2];
+      }
+      draw_entity_graph($command[1],$depth);
+    }
+    else {
+      print "\n\tA entidade [".$command[1]."] nao existe\n";
     }
   }
   elsif($command[0] eq "help") {
@@ -56,7 +71,7 @@ while(<>) {
 # List all loaded entities
 sub list_entities {
   for my $k (keys %graph_content) {
-      print "$k  ".$graph_content{$k}{type}."\n";
+    print "$k  ".$graph_content{$k}{type}."\n";
   }
 }
 
@@ -65,13 +80,53 @@ sub dump_entity {
   my $ent = shift;
   $ent =~ s/_/ /g;
   if(exists $graph_content{$ent}) {
-
     print Dumper(\%{$graph_content{$ent}});
   } else {
-    print "\n\tA entidade [$ent] não existe.\n";
+    print "\n\tA entidade [$ent] nao existe.\n";
   }
 }
 
+# Draw the graph for a certain entity with a given depth
+sub draw_entity_graph {
+  my ($ent,$depth) = @_;
+
+  my %ent_rels = %{$graph_content{$ent}{rels}};
+  my $etype = $graph_content{$ent}{type};
+  $graph->add_node(name => $ent, shape => $entities_configs{$etype}{shape}, color => $entities_configs{$etype}{color});
+  for my $k (keys %ent_rels) {
+    if($depth > 0) {
+      draw_entity_graph_nodes($k,$depth);
+    }
+  }
+  # draw_entity_graph_edges($ent,$depth);
+  generate_graph();
+}
+
+sub draw_entity_graph_nodes {
+  my ($ent,$depth) = @_;
+  my $etype = $graph_content{$ent}{type};
+  print "$ent $etype\n";
+  if($depth > 0) {
+    $graph->add_node(name => $ent, shape => $entities_configs{$etype}{shape}, color => $entities_configs{$etype}{color});
+    my %ent_rels = %{$graph_content{$ent}{rels}};
+    for my $rel (keys %ent_rels) {
+      draw_entity_graph_nodes($rel,$depth-1);
+    }
+  }
+}
+
+sub generate_graph {
+  # Generate and Pop up graph in parallel process
+  my($format)      = 'svg';
+  my($output_file) = File::Spec->catfile('out', "sub.graph.$format");
+  $graph -> run(format => $format, output_file => $output_file);
+  print "\n[PRIMA ENTER]\n";
+  $pm->start and next;
+  system("gnome-terminal -x sh -c 'eog out/sub.graph.$format'");
+  $pm->finish;
+}
+
+# Load the entities graph from a XML source
 sub load_xml_graph {
   my ( $file ) = @_;
 
@@ -109,14 +164,14 @@ sub load_xml_graph {
 __END__
 # Create nodes
 for my $k (keys %graph_content) {
-    my $etype = $graph_content{$k}{type};
-    $graph->add_node(name => $k, shape => $entities_configs{$etype}{shape}, color => $entities_configs{$etype}{color});
+  my $etype = $graph_content{$k}{type};
+  $graph->add_node(name => $k, shape => $entities_configs{$etype}{shape}, color => $entities_configs{$etype}{color});
 }
 
 for my $k (keys %graph_content) {
   my %rels = %{$graph_content{$k}{rels}};
   for my $rel (keys %rels ) {
-      $graph->add_edge(from=>$k, to=>$rel, arrowsize=>$rels{$rel});
+    $graph->add_edge(from=>$k, to=>$rel, arrowsize=>$rels{$rel});
   }
 }
 
