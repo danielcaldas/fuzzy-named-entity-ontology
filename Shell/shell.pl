@@ -52,6 +52,7 @@ while(<>) {
   }
   elsif($command[0] eq "graph") {
     my $depth = 1;
+    $command[1] =~ s/_/ /g;
     if(exists $graph_content{$command[1]}) {
       if($command[2]) {
         $depth += $command[2];
@@ -63,8 +64,7 @@ while(<>) {
     }
   }
   elsif($command[0] eq "help") {
-    print "\n\tlist entidades - listar entidades e respetivo tipo\n";
-    print "\tdump nome_da_entidade - mostrar detalhe de uma dada entidade (se o nome da entidade tiver espacos substituir por _)\n";
+    print_help_menu();
   }
   print "\n> ";
 }
@@ -90,13 +90,24 @@ sub dump_entity {
 # Draw the graph for a certain entity with a given depth
 sub draw_entity_graph {
   my ($ent,$depth) = @_;
+
   my %ent_rels = %{$graph_content{$ent}{rels}};
   my $etype = $graph_content{$ent}{type};
   $graph->add_node(name => $ent, shape => $entities_configs{$etype}{shape}, color => $entities_configs{$etype}{color});
   $graph_nodes{$ent}++;
+  # Nodes
   for my $k (keys %ent_rels) {
     if($depth > 0) {
       draw_entity_graph_nodes($k,$depth);
+    }
+  }
+  # Edges
+  for my $k (keys %graph_nodes) {
+    my %k_rels = %{$graph_content{$k}{rels}};
+    for my $k_rel (keys %k_rels) {
+      if(exists $graph_nodes{$k_rel}) {
+        $graph->add_edge(from=>$k, to=>$k_rel, arrowsize=>$k_rels{$k_rel});
+      }
     }
   }
   # draw_entity_graph_edges($ent,$depth);
@@ -166,6 +177,10 @@ sub load_xml_graph {
   return %graph;
 }
 
+sub print_help_menu {
+  print "\n\tlist entidades - listar entidades e respetivo tipo\n";
+  print "\tdump nome_da_entidade - mostrar detalhe de uma dada entidade (se o nome da entidade tiver espacos substituir por _)\n";
+}
 __END__
 # Create nodes
 for my $k (keys %graph_content) {
