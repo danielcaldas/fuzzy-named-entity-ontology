@@ -13,12 +13,13 @@ my $MAX_PROCESSES = 5;
 
 # Global entities configs
 my $pm = Parallel::ForkManager->new($MAX_PROCESSES);
-my $title_label = "fuzzy named entity ontology";
+my $title_label = "fuzzy named entity ontology\nLegenda: Verde - Pessoas, Azul - Cidades, Vermelho - Datas, Castanho - Paises, Amarelo - Entidade Principal";
 my %entities_configs = (
-"PESSOA" => { color => "green", shape => "circle" },
-"CIDADE" => { color => "blue", shape => "circle" },
-"DATA" => { color => "red", shape => "circle" },
-"PAIS" => { color => "brown", shape => "circle" }
+  "PESSOA" => { color => "green", shape => "circle" },
+  "CIDADE" => { color => "blue", shape => "circle" },
+  "DATA" => { color => "red", shape => "circle" },
+  "PAIS" => { color => "brown", shape => "circle" },
+  "MAIN" => { color => "yellow", shape => "circle" }
 );
 
 # Load graph into mem
@@ -27,10 +28,10 @@ my %graph_nodes;
 
 my ($graph) = GraphViz2 -> new
 (
-edge   => {color => 'grey'},
-global => {directed => 0},
-graph  => {label => $title_label, rankdir => 'TB'},
-node   => {shape => 'oval'},
+  edge   => {color => 'grey'},
+  global => {directed => 0},
+  graph  => {label => $title_label, rankdir => 'TB'},
+  node   => { shape => 'oval', style => 'filled'},
 );
 
 # Shell
@@ -39,9 +40,7 @@ while(<>) {
   chomp $_;
   my @command = split / /, $_;
   if($command[0] eq "list") {
-    if($command[1] eq "entidades") {
-      list_entities();
-    }
+    list_entities();
   }
   if($command[0] eq "dump") {
     if( !($command[1] eq "") ) {
@@ -93,7 +92,7 @@ sub draw_entity_graph {
 
   my %ent_rels = %{$graph_content{$ent}{rels}};
   my $etype = $graph_content{$ent}{type};
-  $graph->add_node(name => $ent, shape => $entities_configs{$etype}{shape}, color => $entities_configs{$etype}{color});
+  $graph->add_node(name => $ent, shape => $entities_configs{"MAIN"}{shape}, color => $entities_configs{"MAIN"}{color});
   $graph_nodes{$ent}++;
   # Nodes
   for my $k (keys %ent_rels) {
@@ -110,10 +109,12 @@ sub draw_entity_graph {
       }
     }
   }
-  # draw_entity_graph_edges($ent,$depth);
-  generate_graph();
+  generate_graph($ent);
+  undef %ent_rels;
+  reset_graph();
 }
 
+# Draw all the entity nodes related with a certain depth value
 sub draw_entity_graph_nodes {
   my ($ent,$depth) = @_;
   my $etype = $graph_content{$ent}{type};
@@ -131,15 +132,36 @@ sub draw_entity_graph_nodes {
   }
 }
 
+# Generate and Pop up graph in parallel process
 sub generate_graph {
-  # Generate and Pop up graph in parallel process
+  my $ent = shift;
   my($format)      = 'svg';
-  my($output_file) = File::Spec->catfile('out', "sub.graph.$format");
+  my($output_file) = File::Spec->catfile('out', "$ent.graph.$format");
   $graph -> run(format => $format, output_file => $output_file);
   print "\n[PRIMA ENTER]\n";
   $pm->start and next;
-  system("gnome-terminal -x sh -c 'eog out/sub.graph.$format'");
+  system("gnome-terminal -x sh -c 'eog out/$ent.graph.$format'");
   $pm->finish;
+}
+
+# Reset all graph related variables
+sub reset_graph {
+  undef %graph_nodes;
+  undef $graph;
+  $graph = GraphViz2 -> new
+  (
+    edge   => {color => 'grey'},
+    global => {directed => 0},
+    graph  => {label => $title_label, rankdir => 'TB'},
+    node   => { shape => 'oval', style => 'filled'},
+  );
+}
+
+# Print help menu
+sub print_help_menu {
+  print "\n\tlist - listar entidades e respetivo tipo\n";
+  print "\tdump [nome_entidade] - mostrar detalhe de uma dada entidade (se o nome da entidade tiver espacos substituir por _)\n";
+  print "\tgraph [nome_entidade] [(depth)?] - desenhar o grafo de uma dada entidade ()o parametro da profundidade e opcional, o valor por defeito e 1\n";
 }
 
 # Load the entities graph from a XML source
@@ -176,29 +198,3 @@ sub load_xml_graph {
   }
   return %graph;
 }
-
-sub print_help_menu {
-  print "\n\tlist entidades - listar entidades e respetivo tipo\n";
-  print "\tdump nome_da_entidade - mostrar detalhe de uma dada entidade (se o nome da entidade tiver espacos substituir por _)\n";
-}
-__END__
-# Create nodes
-for my $k (keys %graph_content) {
-  my $etype = $graph_content{$k}{type};
-  $graph->add_node(name => $k, shape => $entities_configs{$etype}{shape}, color => $entities_configs{$etype}{color});
-}
-
-for my $k (keys %graph_content) {
-  my %rels = %{$graph_content{$k}{rels}};
-  for my $rel (keys %rels ) {
-    $graph->add_edge(from=>$k, to=>$rel, arrowsize=>$rels{$rel});
-  }
-}
-
-# Generate and Pop up graph
-my($format)      = shift || 'svg';
-my($output_file) = shift || File::Spec -> catfile('out', "sub.graph.$format");
-
-$graph -> run(format => $format, output_file => $output_file);
-
-exec("eog out/sub.graph.$format");
