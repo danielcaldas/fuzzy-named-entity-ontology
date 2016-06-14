@@ -65,7 +65,8 @@ sub entities_typing
 
 				# Reconhecer tipo com a tag freeling
 				my $type = rec_type($t,$ent);
-				# tag=\"$t\" não é necessário no passo seguinte
+				
+				if($type =~ /DATA/) { $ent = normalize_date($ent); }
 				print "<ENT id=\"$id\" type=\"$type\">$ent</ENT> ";
 			}
 		}
@@ -104,13 +105,63 @@ sub rec_type
 			$type = 'PESSOA'; 
 		}
 	}
-	elsif($tag =~ /W/)
+	elsif($tag =~ /W/ and is_date($ent))
 	{
 		$type = "DATA";
-		# normalizar datas
 	}
 
 	return $type;
+}
+
+sub is_date
+{
+	my $ent = shift;
+	
+	my $mes = 'janeiro|fevereiro|março|abril|maio|junho|julho|agosto|setembro|outubro|novembro|dezembro';
+	my $reg1 = qr{[0-9]+ de ($mes) de [0-9][0-9][0-9][0-9]};
+	my $reg2 = qr{[0-9]+\/[0-9]+\/[0-9][0-9][0-9][0-9]};
+	my $reg3 = qr{[0-9]+ de ($mes)};
+	my $reg4 = qr{($mes) de [0-9][0-9][0-9][0-9]};
+	my $reg5 = qr{[0-9][0-9][0-9][0-9]\/[0-9][0-9]\/[0-9][0-9]};
+
+	if($ent =~ /$reg1|$reg2|$reg3|$reg4|$reg5/i) { return 1; }
+	else { return 0; }
+}
+
+sub normalize_date
+{
+	my $ent = shift;
+	
+	my $mes = 'janeiro|fevereiro|março|abril|maio|junho|julho|agosto|setembro|outubro|novembro|dezembro';
+	my $reg1 = qr{([0-9]+) de ($mes) de ([0-9][0-9][0-9][0-9])};
+	my $reg2 = qr{([0-9]+)\/([0-9]+)\/([0-9][0-9][0-9][0-9])};
+	my $reg3 = qr{([0-9]+) de ($mes)};
+	my $reg4 = qr{($mes) de ([0-9][0-9][0-9][0-9])};
+	
+	if($ent =~ /$reg1/i) { $ent = sprintf("%s/%s/%s",$3,mes_to_num($2),$1); }
+	elsif($ent =~ /$reg2/i) { $ent = sprintf("%s/%s/%s",$3,$2,$1); }
+	elsif($ent =~ /$reg3/i) { $ent = sprintf("%s/%s",mes_to_num($2),$1); }
+	elsif($ent =~ /$reg4/i) { $ent = sprintf("%s/%s",$2,mes_to_num($1)); }
+
+	return $ent;
+}
+
+sub mes_to_num
+{
+	my $mes = shift;
+
+	if($mes =~ /janeiro/i) { return "01"; }
+	elsif($mes =~ /fevereiro/i) { return "02"; }
+	elsif($mes =~ /março/i) { return "03"; }
+	elsif($mes =~ /abril/i) { return "04"; }
+	elsif($mes =~ /maio/i) { return "05"; }
+	elsif($mes =~ /junho/i) { return "06"; }
+	elsif($mes =~ /julho/i) { return "07"; }
+	elsif($mes =~ /agosto/i) { return "08"; }
+	elsif($mes =~ /setembro/i) { return "09"; }
+	elsif($mes =~ /outubro/i) { return "10"; }
+	elsif($mes =~ /novembro/i) { return "11"; }
+	elsif($mes =~ /dezembro/i) { return "12"; }
 }
 
 sub in_jspell
