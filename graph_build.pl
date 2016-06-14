@@ -16,7 +16,6 @@ my $doc = $parser->parse_file($xml_src);
 my @nodeList = $doc->getElementsByTagName('news');
 
 my %grafo;
-
 foreach my $news (@nodeList) 
 {
 	foreach my $tag ($news->childNodes()) 
@@ -79,20 +78,20 @@ sub build_graph
 	my $texto = shift;
 	
 	my $tipo = qr{PAIS|CIDADE|PESSOA|DATA};
-	my @ents = ($texto =~ /<ENT id="[0-9]+" tag="[^"]*" type="$tipo">[^<]*<\/ENT>/g);
+	my @ents = ($texto =~ /<ENT id="[0-9]+" type="$tipo">[^<]*<\/ENT>/g);
 	my $size = scalar @ents;
 
 	for(my $i=0; $i<$size; $i++)
 	{
-		if($ents[$i] =~ /<ENT id="[0-9]+" tag="[^"]*" type="([^"]*)">([^<]*)<\/ENT>/)
+		if($ents[$i] =~ /<ENT id="[0-9]+" type="([^"]*)">([^<]*)<\/ENT>/)
 		{
-			#id e tag não são necessários
+			#id não é necessário
 			my $type1 = $1;
 			my $ent1 = $2;
 
 			for(my $j=$i; $j<$size; $j++)
 			{
-				if($ents[$j] =~ /<ENT id="[0-9]+" tag="[^"]*" type="([^"]*)">([^<]*)<\/ENT>/)
+				if($ents[$j] =~ /<ENT id="[0-9]+" type="([^"]*)">([^<]*)<\/ENT>/)
 				{
 					my $type2 = $1;
 					my $ent2 = $2;
@@ -124,14 +123,13 @@ sub build_text
 		}
 		else
 		{
-			if($elem =~ /<ENT id="([0-9]+)" tag="([^"]*)" type="([^"]*)">([^<]*)<\/ENT>/)
+			if($elem =~ /<ENT id="([0-9]+)" type="([^"]*)">([^<]*)<\/ENT>/)
 			{
 				my $id = $1;
-				my $t = $2;
-				my $type = $3;
-				my $ent = $4;
+				my $type = $2;
+				my $ent = $3;
 
-				$res .= "<ENT id=\"$id\" tag=\"$t\" type=\"$type\">$ent</ENT> ";
+				$res .= "<ENT id=\"$id\" type=\"$type\">$ent</ENT> ";
 			}
 		}
 	}

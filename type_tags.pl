@@ -14,8 +14,9 @@ my %cidades_pt = load_gazeteer('./Gazeteer/cidades_portuguesas.txt');
 my %cidades_an = load_gazeteer('./Gazeteer/cidades_angolanas.txt');
 my %nomes = load_gazeteer('./Gazeteer/nomes.txt');
 
-# Dicionario
-my $dic = Lingua::Jspell->new("pt");
+# Dicionarios
+my $dic_pt = Lingua::Jspell->new("pt");
+my $dic_en = Lingua::Jspell->new("en");
 
 # Parse XML igual ao anterior
 my $xml_src = $ARGV[0];
@@ -64,7 +65,8 @@ sub entities_typing
 
 				# Reconhecer tipo com a tag freeling
 				my $type = rec_type($t,$ent);
-				print "<ENT id=\"$id\" tag=\"$t\" type=\"$type\">$ent</ENT> ";
+				# tag=\"$t\" não é necessário no passo seguinte
+				print "<ENT id=\"$id\" type=\"$type\">$ent</ENT> ";
 			}
 		}
 	}
@@ -81,23 +83,23 @@ sub rec_type
 
 	if($tag =~ /NP0000/)
 	{
-		if(in_gazeteer($ent,\%paises) or in_jspell($ent,$dic,'country')) 
+		if(in_gazeteer($ent,\%paises) or in_jspell($ent,$dic_pt,'country') or in_jspell($ent,$dic_en,'country')) 
 		{ 
 			$type = 'PAIS'; 
 		}
 
-		if(in_gazeteer($ent,\%cidades_pt) or in_jspell($ent,$dic,'cid')) 
+		if(in_gazeteer($ent,\%cidades_pt) or in_jspell($ent,$dic_pt,'cid') or in_jspell($ent,$dic_en,'cid')) 
 		{ 
 			$type = 'CIDADE'; 
 		}
 		
-		if(in_gazeteer($ent,\%cidades_an) or in_jspell($ent,$dic,'cid')) 
+		if(in_gazeteer($ent,\%cidades_an) or in_jspell($ent,$dic_pt,'cid') or in_jspell($ent,$dic_en,'cid')) 
 		{ 
 			$type = 'CIDADE'; 
 		}
 		
 		my $firstword = (split(/ /,$ent))[0];
-		if(in_gazeteer($firstword,\%nomes) or in_jspell($ent,$dic,'p')) 
+		if(in_gazeteer($firstword,\%nomes) or in_jspell($ent,$dic_pt,'p') or in_jspell($ent,$dic_en,'p')) 
 		{ 
 			$type = 'PESSOA'; 
 		}
@@ -105,6 +107,7 @@ sub rec_type
 	elsif($tag =~ /W/)
 	{
 		$type = "DATA";
+		# normalizar datas
 	}
 
 	return $type;
@@ -127,10 +130,7 @@ sub in_jspell
 		{
 			return 1;
 		}
-		else 
-		{
-			return 0;
-		}
+		else { return 0; }
 	}
 }
 
