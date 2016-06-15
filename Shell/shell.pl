@@ -23,7 +23,7 @@ my %entities_configs = (
 );
 
 # Load graph into mem
-my %graph_content = load_xml_graph("../graph.xml");
+my %graph_content = load_xml_graph("../Graph/corpus_pt_graph.xml");
 my %graph_nodes;
 
 my ($graph) = GraphViz2 -> new
@@ -94,6 +94,7 @@ sub draw_entity_graph {
   my $etype = $graph_content{$ent}{type};
   $graph->add_node(name => $ent, shape => $entities_configs{"MAIN"}{shape}, color => $entities_configs{"MAIN"}{color});
   $graph_nodes{$ent}++;
+  my %node_pairs;
   # Nodes
   for my $k (keys %ent_rels) {
     if($depth > 0) {
@@ -104,8 +105,9 @@ sub draw_entity_graph {
   for my $k (keys %graph_nodes) {
     my %k_rels = %{$graph_content{$k}{rels}};
     for my $k_rel (keys %k_rels) {
-      if(exists $graph_nodes{$k_rel}) {
-        $graph->add_edge(from=>$k, to=>$k_rel, arrowsize=>$k_rels{$k_rel});
+      if($graph_nodes{$k_rel} && (!(exists $node_pairs{$k.",".$k_rel}) && !(exists $node_pairs{$k_rel.",".$k}))) {
+        $graph->add_edge(from=>$k, to=>$k_rel, penwidth => ($k_rels{$k_rel}/10));
+        $node_pairs{$k.",".$k_rel}++;
       }
     }
   }
