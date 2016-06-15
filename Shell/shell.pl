@@ -8,6 +8,7 @@ use GraphViz2;
 use Data::Dumper;
 use XML::LibXML;
 use Parallel::ForkManager;
+use utf8::all;
 
 my $MAX_PROCESSES = 5;
 
@@ -15,23 +16,23 @@ my $MAX_PROCESSES = 5;
 my $pm = Parallel::ForkManager->new($MAX_PROCESSES);
 my $title_label = "fuzzy named entity ontology\nLegenda: Verde - Pessoas, Azul - Cidades, Vermelho - Datas, Castanho - Paises, Amarelo - Entidade Principal";
 my %entities_configs = (
-  "PESSOA" => { color => "green", shape => "circle" },
-  "CIDADE" => { color => "blue", shape => "circle" },
-  "DATA" => { color => "red", shape => "circle" },
-  "PAIS" => { color => "brown", shape => "circle" },
-  "MAIN" => { color => "yellow", shape => "circle" }
+"PESSOA" => { color => "green", shape => "circle" },
+"CIDADE" => { color => "blue", shape => "circle" },
+"DATA" => { color => "red", shape => "circle" },
+"PAIS" => { color => "brown", shape => "circle" },
+"MAIN" => { color => "yellow", shape => "circle" }
 );
 
 # Load graph into mem
-my %graph_content = load_xml_graph("../Graph/corpus_pt_graph.xml");
+my %graph_content = load_xml_graph("/home/daniel/MEI/PLC/SPLN/fuzzy-data/marcelo/marcelo_intersection_total.xml");
 my %graph_nodes;
 
 my ($graph) = GraphViz2 -> new
 (
-  edge   => {color => 'grey'},
-  global => {directed => 0},
-  graph  => {label => $title_label, rankdir => 'TB'},
-  node   => { shape => 'oval', style => 'filled'},
+edge   => {color => 'grey'},
+global => {directed => 0},
+graph  => {label => $title_label, rankdir => 'TB'},
+node   => { shape => 'oval', style => 'filled'},
 );
 
 # Shell
@@ -52,7 +53,12 @@ while(<>) {
   elsif($command[0] eq "graph") {
     my $depth = 1;
     $command[1] =~ s/_/ /g;
-    if(exists $graph_content{$command[1]}) {
+    if($command[1] eq "all") {
+      for my $ent (keys %graph_content) {
+        draw_entity_graph($ent,$depth);
+      }
+    }
+    elsif(exists $graph_content{$command[1]}) {
       if($command[2]) {
         $depth += $command[2];
       }
@@ -79,8 +85,12 @@ sub list_entities {
 sub dump_entity {
   my $ent = shift;
   $ent =~ s/_/ /g;
+  print "\n";
   if(exists $graph_content{$ent}) {
-    print Dumper(\%{$graph_content{$ent}});
+    my %ent_rels = %{$graph_content{$ent}{rels}};
+    for my $k (sort{$ent_rels{$b} <=> $ent_rels{$a}} keys %ent_rels) {
+      print "$k - ".$ent_rels{$k}."\n";
+    }
   } else {
     print "\n\tA entidade [$ent] nao existe.\n";
   }
@@ -97,17 +107,19 @@ sub draw_entity_graph {
   my %node_pairs;
   # Nodes
   for my $k (keys %ent_rels) {
-    if($depth > 0) {
+    if((exists $graph_content{$k}) && $depth > 0) {
       draw_entity_graph_nodes($k,$depth);
     }
   }
   # Edges
   for my $k (keys %graph_nodes) {
-    my %k_rels = %{$graph_content{$k}{rels}};
-    for my $k_rel (keys %k_rels) {
-      if($graph_nodes{$k_rel} && (!(exists $node_pairs{$k.",".$k_rel}) && !(exists $node_pairs{$k_rel.",".$k}))) {
-        $graph->add_edge(from=>$k, to=>$k_rel, penwidth => log10($k_rels{$k_rel}));
-        $node_pairs{$k.",".$k_rel}++;
+    if((exists $graph_content{$k}) && defined $graph_content{$k}{rels}) {
+      my %k_rels = %{$graph_content{$k}{rels}};
+      for my $k_rel (keys %k_rels) {
+        if($graph_nodes{$k_rel} && (!(exists $node_pairs{$k.",".$k_rel}) && !(exists $node_pairs{$k_rel.",".$k}))) {
+          $graph->add_edge(from=>$k, to=>$k_rel, penwidth => log10($k_rels{$k_rel}));
+          $node_pairs{$k.",".$k_rel}++;
+        }
       }
     }
   }
@@ -157,10 +169,10 @@ sub reset_graph {
   undef $graph;
   $graph = GraphViz2 -> new
   (
-    edge   => {color => 'grey'},
-    global => {directed => 0},
-    graph  => {label => $title_label, rankdir => 'TB'},
-    node   => { shape => 'oval', style => 'filled'},
+  edge   => {color => 'grey'},
+  global => {directed => 0},
+  graph  => {label => $title_label, rankdir => 'TB'},
+  node   => { shape => 'oval', style => 'filled'},
   );
 }
 
