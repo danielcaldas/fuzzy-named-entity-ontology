@@ -106,7 +106,7 @@ sub draw_entity_graph {
     my %k_rels = %{$graph_content{$k}{rels}};
     for my $k_rel (keys %k_rels) {
       if($graph_nodes{$k_rel} && (!(exists $node_pairs{$k.",".$k_rel}) && !(exists $node_pairs{$k_rel.",".$k}))) {
-        $graph->add_edge(from=>$k, to=>$k_rel, penwidth => ($k_rels{$k_rel}/10));
+        $graph->add_edge(from=>$k, to=>$k_rel, penwidth => log10($k_rels{$k_rel}));
         $node_pairs{$k.",".$k_rel}++;
       }
     }
@@ -114,6 +114,11 @@ sub draw_entity_graph {
   generate_graph($ent);
   undef %ent_rels;
   reset_graph();
+}
+
+sub log10 {
+  my $n = shift;
+  return log($n)/log(10);
 }
 
 # Draw all the entity nodes related with a certain depth value
